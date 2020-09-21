@@ -1,9 +1,21 @@
 <template>
-  <div class="contents">
-    <div>
-      <p class="time hour">{{ date_info }}</p>
-      <p class="time min">{{ time_info }}</p>
-      <p class="time sec">{{ sec_info }}</p>
+  <div class="container">
+    <div class="time_item">
+      <div>
+        <p class="time hour" :style="{fontSize: font_scale*0.7+'vh'}">{{ date_info }}</p>
+        <p class="time min" :style="{fontSize: font_scale*0.7+'vh'}">{{ time_info }}</p>
+        <p class="time sec" :style="{fontSize: font_scale+'vh'}">{{ sec_info }}</p>
+      </div>
+    </div>
+    <div class="btn add">
+      <md-button class="md-fab" @click="setFontScaleValue(1);">
+        <md-icon>add</md-icon>
+      </md-button>
+    </div>
+    <div class="btn remove" @click="setFontScaleValue(-1);">
+      <md-button class="md-fab">
+        <md-icon>remove</md-icon>
+      </md-button>
     </div>
   </div>
 </template>
@@ -15,7 +27,14 @@ export default {
       date_info: '',
       time_info: '',
       sec_info: '',
-      timer: ''
+      timer: '',
+      font_scale: 10
+    }
+  },
+  methods: {
+    setFontScaleValue(value) {
+      this.font_scale += value;
+      console.log(value);
     }
   },
   created() {
@@ -53,15 +72,51 @@ export default {
 
 <style scoped>
 
+.container {
+  width: 100%;
+  height: 100%;
+}
+
 .contents {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.time_item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .time {
-  font-size: 10vh;
   display: flex;
   justify-content: center;
 }
+
+.btn {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.remove {
+  position: absolute;
+  bottom: 0;
+}
+
+.add {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 </style>
