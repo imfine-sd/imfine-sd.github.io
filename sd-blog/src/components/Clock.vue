@@ -77,12 +77,6 @@ export default {
   height: 100%;
 }
 
-.contents {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .time_item {
   position: absolute;
   top: 0;

@@ -7,13 +7,15 @@
           <md-icon>menu</md-icon>
         </md-button>
         <router-link to="/">
-          <span class="md-title">IMFINE SD</span>
+          <span class="md-title">
+            IMFINE SD
+          </span>
         </router-link>
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
         <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
+          <span>Menu</span>
 
           <div class="md-toolbar-section-end">
             <md-button class="md-icon-button md-dense" @click="toggleMenu">
