@@ -47,7 +47,7 @@ export default {
     }
   },
   created() {
-    axios.get('https://github.com/imfine-sd/SD_ARCHIVES/raw/master/info.json')
+    axios.get('https://api.hnpwa.com/v0/news/1.json')
     .then(response => {
       this.data = response
       console.log(response)
