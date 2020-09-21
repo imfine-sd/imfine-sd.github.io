@@ -6,7 +6,9 @@
         <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
           <md-icon>menu</md-icon>
         </md-button>
-        <span class="md-title">IMFINE SD</span>
+        <router-link to="/">
+          <span class="md-title">IMFINE SD</span>
+        </router-link>
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
@@ -21,30 +23,32 @@
         </md-toolbar>
 
         <md-list>
-          <md-list-item>
-            <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
-          </md-list-item>
+          <router-link to="/archives">
+            <md-list-item>
+              <md-icon>archive</md-icon>
+              <span class="md-list-item-text">Archive</span>
+            </md-list-item>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>send</md-icon>
-            <span class="md-list-item-text">Sent Mail</span>
-          </md-list-item>
+          <router-link to="/clock">
+            <md-list-item>
+              <md-icon>access_time</md-icon>
+              <span class="md-list-item-text">Clock</span>
+            </md-list-item>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
-          </md-list-item>
+          <router-link to="/about">
+            <md-list-item>
+                <md-icon>info</md-icon>
+                <span class="md-list-item-text">About</span>
+            </md-list-item>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>error</md-icon>
-            <span class="md-list-item-text">Spam</span>
-          </md-list-item>
         </md-list>
       </md-app-drawer>
 
       <md-app-content class="contents">
-        <img class="logo" src="../src/assets/imfine_1.png" >
+        <router-view></router-view>
       </md-app-content>
     </md-app>
   </div>
@@ -64,7 +68,7 @@
   }
 </script>
 
-<style> 
+<style scoped> 
   .page-container {
     margin: 0 auto;
     position: absolute;
@@ -85,9 +89,10 @@
   }
 
   .contents {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: sticky;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
-
 </style>
