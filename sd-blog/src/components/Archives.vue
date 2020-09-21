@@ -49,7 +49,7 @@ export default {
   created() {
     axios.get('https://github.com/imfine-sd/SD_ARCHIVES/raw/master/info.json')
     .then(response => {
-      response = this.data
+      this.data = response
       console.log(response)
     })
     .catch(err => {
