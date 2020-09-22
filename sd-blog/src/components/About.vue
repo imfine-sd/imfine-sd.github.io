@@ -11,6 +11,7 @@
       <b>Project Inquiry</b>
       <div>pilsun.yang@im-fine.co.kr</div>
     </div>
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
@@ -22,11 +23,59 @@ export default {
     }
   },
   mounted() {
-    const container = document.querySelector('.container')
-    console.log(container)
-    const ic = document.querySelector('#icon')
-    console.log(ic)
+    let isDrawing = false;
+    let x = 0;
+    let y = 0;
 
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    canvas.setAttribute('width', window.innerWidth)
+    canvas.setAttribute('height', window.innerHeight)
+    canvas.style.width = window.innerWidth
+    canvas.style.height = window.innerHeight
+
+    canvas.addEventListener('mousedown', e => {
+      x = e.offsetX;
+      y = e.offsetY;
+      isDrawing = true;
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (isDrawing === true) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = e.offsetX;
+        y = e.offsetY;
+      }
+    });
+
+    window.addEventListener('mouseup', e => {
+      if (isDrawing === true) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = 0;
+        y = 0;
+        isDrawing = false;
+      }
+    });
+
+    window.addEventListener('mouseout', e => {
+      if (isDrawing === true) {
+        drawLine(context, x, y, e.offsetX, e.offsetY);
+        x = 0;
+        y = 0;
+        isDrawing = false;
+      }
+    })
+
+    function drawLine(context, x1, y1, x2, y2) {
+      context.beginPath();
+      context.strokeStyle = 'black';
+      context.lineWidth = 1;
+      context.moveTo(x1, y1);
+      context.lineTo(x2, y2);
+      context.stroke();
+      context.closePath();
+    }
   },
   methods: {
     onMouseDown() {
@@ -53,6 +102,7 @@ export default {
 }
 
 .logo {
+  pointer-events: none;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -64,10 +114,15 @@ export default {
 }
 
 .info {
+  pointer-events: none;
   position: absolute;
   bottom: 0;
   margin: 50px;
   font-size: 16px;
 }
 
+canvas {
+  position: absolute;
+  z-index: 2;
+}
 </style>
