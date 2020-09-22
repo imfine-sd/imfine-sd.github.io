@@ -31,9 +31,9 @@ export default {
     const context = canvas.getContext('2d');
 
     canvas.setAttribute('width', window.innerWidth)
-    canvas.setAttribute('height', window.innerHeight)
+    canvas.setAttribute('height', window.innerHeight - 100)
     canvas.style.width = window.innerWidth
-    canvas.style.height = window.innerHeight
+    canvas.style.height = window.innerHeight - 100
 
     canvas.addEventListener('mousedown', e => {
       x = e.offsetX;
