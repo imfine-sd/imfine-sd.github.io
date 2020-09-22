@@ -3,6 +3,7 @@ module.exports = {
     ? '/'
     : '/',
   outputDir: '../docs',
+  runtimeCompiler: true,
   configureWebpack: {
     devtool: 'source-map'
   },

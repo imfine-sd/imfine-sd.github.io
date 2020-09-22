@@ -39,6 +39,13 @@
             </md-list-item>
           </router-link>
 
+          <router-link to="/image">
+            <md-list-item>
+                <md-icon>collections</md-icon>
+                <span class="md-list-item-text">Image</span>
+            </md-list-item>
+          </router-link>
+
           <router-link to="/about">
             <md-list-item>
                 <md-icon>info</md-icon>

@@ -5,6 +5,8 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import {router} from './routers/index.js'
 
+require('./directives/index.js')
+
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
 

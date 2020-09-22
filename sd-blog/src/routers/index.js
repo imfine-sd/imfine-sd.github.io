@@ -5,6 +5,7 @@ import Archives from '@/components/Archives.vue';
 import Clock from '@/components/Clock.vue';
 import About from '@/components/About.vue';
 import NotFound from '@/components/NotFound.vue';
+import Image from '@/components/Image.vue';
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,10 @@ export const router = new VueRouter({
         {
             path: '/clock',
             component: Clock
+        },
+        {
+            path: '/image',
+            component: Image
         },
         {
             path: '/about',

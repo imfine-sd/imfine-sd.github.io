@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img src="../../src/assets/sd.png" />
+      <img id="icon" src="../../src/assets/sd.png" />
     </div>
     <div class="info">
       <b>Technical Inquiry</b>
@@ -16,7 +16,32 @@
 
 <script>
 export default {
+  data() {
+    return {
+      "mouse_on": false
+    }
+  },
+  mounted() {
+    const container = document.querySelector('.container')
+    console.log(container)
+    const ic = document.querySelector('#icon')
+    console.log(ic)
 
+  },
+  methods: {
+    onMouseDown() {
+      console.log("onMouseDown")
+      this.mouse_on = true;
+    },
+    onMouseMove() {
+      if (!this.mouse_on) return
+      console.log("onMouseMove")
+    },
+    onMouseUp() {
+      console.log("onMouseUp")
+      this.mouse_on = false;
+    }
+  }
 }
 </script>
 
