@@ -7,15 +7,15 @@
         <p class="time sec" :style="{fontSize: font_scale+'vh'}">{{ sec_info }}</p>
       </div>
     </div>
-    <div class="btn add">
-      <md-button class="md-fab" @click="setFontScaleValue(1);">
-        <md-icon>add</md-icon>
-      </md-button>
+    <div class="btn add" @click="setFontScaleValue(1);">
+      <v-btn color="primary" fab x-large dark>
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
     </div>
     <div class="btn remove" @click="setFontScaleValue(-1);">
-      <md-button class="md-fab">
-        <md-icon>remove</md-icon>
-      </md-button>
+      <v-btn color="primary" fab x-large dark>
+        <v-icon>mdi-minus</v-icon>
+      </v-btn>
     </div>
   </div>
 </template>

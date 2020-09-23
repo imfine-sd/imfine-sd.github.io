@@ -3,7 +3,7 @@
     <div class="logo">
       <img id="icon" src="../../src/assets/sd.png" />
     </div>
-    <div class="info">
+    <div class="information">
       <b>Technical Inquiry</b>
       <div>jongun.won@im-fine.co.kr</div>
       <div>suyoung.kim@im-fine.co.kr</div>
@@ -113,7 +113,7 @@ export default {
   align-items: center;
 }
 
-.info {
+.information {
   pointer-events: none;
   position: absolute;
   bottom: 0;

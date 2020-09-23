@@ -1,107 +1,65 @@
-
 <template>
-  <div class="page-container">
-    <md-app>
-      <md-app-toolbar class="md-accent">
-        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <router-link to="/">
-          <span class="md-title">
-            IMFINE SD
-          </span>
-        </router-link>
-      </md-app-toolbar>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      app
+    >
+      <v-list dense>
+        <template v-for="item in items">
+          <v-list-item
+            :key="item.text"
+            :to="item.path"
+            link
+          >
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.text }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
 
-      <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Menu</span>
-
-          <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
-              <md-icon>keyboard_arrow_left</md-icon>
-            </md-button>
-          </div>
-        </md-toolbar>
-
-        <md-list>
-          <router-link to="/archives">
-            <md-list-item>
-              <md-icon>archive</md-icon>
-              <span class="md-list-item-text">Archive</span>
-            </md-list-item>
-          </router-link>
-
-          <router-link to="/clock">
-            <md-list-item>
-              <md-icon>access_time</md-icon>
-              <span class="md-list-item-text">Clock</span>
-            </md-list-item>
-          </router-link>
-
-          <router-link to="/image">
-            <md-list-item>
-                <md-icon>collections</md-icon>
-                <span class="md-list-item-text">Image</span>
-            </md-list-item>
-          </router-link>
-
-          <router-link to="/about">
-            <md-list-item>
-                <md-icon>info</md-icon>
-                <span class="md-list-item-text">About</span>
-            </md-list-item>
-          </router-link>
-
-        </md-list>
-      </md-app-drawer>
-
-      <md-app-content class="contents">
-        <router-view></router-view>
-      </md-app-content>
-    </md-app>
-  </div>
+    <v-app-bar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      app
+      color="blue darken-3"
+      dark
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title
+        style="width: 300px"
+        class="ml-0 pl-4"
+      >
+        <v-toolbar-title>IMFINE SD</v-toolbar-title>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
   export default {
-    name: 'App',
+    props: {
+      source: String,
+    },
     data: () => ({
-      menuVisible: false
+      drawer: null,
+      items: [
+        { icon: 'mdi-home', text: 'Main', path: '/' },
+        { icon: 'mdi-archive', text: 'Archives', path: '/archives' },
+        { icon: 'mdi-update', text: 'Clock', path: '/clock' },
+        { icon: 'mdi-image', text: 'Image', path: '/image' },
+        { icon: 'mdi-information', text: 'About', path: '/about' },
+      ],
     }),
-    methods: {
-      toggleMenu () {
-        this.menuVisible = !this.menuVisible
-      }
-    }
   }
 </script>
-
-<style scoped> 
-  .page-container {
-    margin: 0 auto;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-
-  .md-app {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(#000, .12);
-  }
-
-  .md-drawer {
-    width: 230px;
-    max-width: calc(100vw - 125px);
-  }
-
-  .contents {
-    position: sticky;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
