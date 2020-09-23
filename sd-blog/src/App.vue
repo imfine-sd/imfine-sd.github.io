@@ -39,6 +39,7 @@
         <v-toolbar-title>IMFINE SD</v-toolbar-title>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-switch class="switch" inset label="Dark Mode" v-model="darkStatus" @click="changeMode"></v-switch>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -51,7 +52,14 @@
     props: {
       source: String,
     },
+    methods: {
+      changeMode() {
+        console.log("DD = ", this.darkStatus)
+        this.$vuetify.theme.dark = this.darkStatus
+      }
+    },
     data: () => ({
+      darkStatus: false,
       drawer: null,
       items: [
         { icon: 'mdi-home', text: 'Main', path: '/' },
@@ -63,3 +71,15 @@
     }),
   }
 </script>
+
+<style scoped>
+
+.switch {
+  display: flex;
+  top: 10px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+</style>
