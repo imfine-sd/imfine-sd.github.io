@@ -104,6 +104,7 @@ export default {
 
 .remove {
   position: absolute;
+  left: 0;
   bottom: 0;
 }
 

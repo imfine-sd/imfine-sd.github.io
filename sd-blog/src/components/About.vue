@@ -116,6 +116,7 @@ export default {
 .information {
   pointer-events: none;
   position: absolute;
+  left: 0;
   bottom: 0;
   margin: 50px;
   font-size: 16px;
