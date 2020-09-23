@@ -67,6 +67,7 @@
         { icon: 'mdi-archive', text: 'Archives', path: '/archives' },
         { icon: 'mdi-update', text: 'Clock', path: '/clock' },
         { icon: 'mdi-image', text: 'Image', path: '/image' },
+        { icon: 'mdi-file', text: 'File', path: '/file' },
         { icon: 'mdi-information', text: 'About', path: '/about' },
       ],
     }),

@@ -1,11 +1,17 @@
 <template>
   <div class="contents">
-    <img id="icon" src="../../src/assets/imfine_4.png" @mouseover="false">
+    <imfine-card id="icon" @mouseover="false"></imfine-card>
+    <!-- <img id="icon" src="../../src/assets/imfine_4.png" @mouseover="false"> -->
   </div>
 </template>
 
 <script>
+import ImfineCard from '@/components/ImfineCard.vue';
+
 export default {
+  components: {
+    ImfineCard
+  },
   mounted() {
     let isDrag = false;
     let x = window.innerWidth / 2;
@@ -52,11 +58,10 @@ export default {
 </script>
 
 <style scoped>
-img {
+#icon {
   pointer-events: none;
   position: absolute;
   width: 200px;
   height: 200px;
-  background-color: black;
 }
 </style>

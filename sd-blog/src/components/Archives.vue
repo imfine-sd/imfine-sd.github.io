@@ -66,6 +66,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.testicon {
+  width: 200px;
+  height: 200px;
+  background-color: cadetblue;
+}
 
 </style>

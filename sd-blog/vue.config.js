@@ -1,6 +1,6 @@
 module.exports = {
   "publicPath": "/",
-  "outputDir": "../docs",
+  // "outputDir": "../docs",
   "runtimeCompiler": true,
   "configureWebpack": {
     "devtool": "source-map"
