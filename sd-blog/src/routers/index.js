@@ -7,11 +7,13 @@ import About from '@/components/About.vue';
 import NotFound from '@/components/NotFound.vue';
 import Image from '@/components/Image.vue';
 import File from '@/components/File.vue';
+import Facade from '@/components/Facade.vue';
+import Bot from '@/components/Bot.vue';
 
 Vue.use(VueRouter)
 
 export const router = new VueRouter({
-    // mode: 'history',
+    // mode: 'histonry',
     routes: [
         {
             path: '/',
@@ -32,6 +34,14 @@ export const router = new VueRouter({
         {
             path: '/file',
             component: File
+        },
+        {
+            path: '/facade',
+            component: Facade
+        },
+        {
+            path: '/bot',
+            component: Bot
         },
         {
             path: '/about',

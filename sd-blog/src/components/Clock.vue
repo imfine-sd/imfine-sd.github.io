@@ -28,7 +28,7 @@ export default {
       time_info: '',
       sec_info: '',
       timer: '',
-      font_scale: 10
+      font_scale: 20
     }
   },
   methods: {
