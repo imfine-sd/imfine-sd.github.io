@@ -9,6 +9,7 @@ import Image from '@/components/Image.vue';
 import File from '@/components/File.vue';
 import Facade from '@/components/Facade.vue';
 import Bot from '@/components/Bot.vue';
+import Android from '@/components/Android.vue';
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,10 @@ export const router = new VueRouter({
         {
             path: '/bot',
             component: Bot
+        },
+        {
+            path: '/android',
+            component: Android
         },
         {
             path: '/about',

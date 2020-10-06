@@ -69,7 +69,7 @@
         { icon: 'mdi-image', text: 'Image', path: '/image' },
         { icon: 'mdi-file', text: 'File', path: '/file' },
         { icon: 'mdi-message', text: 'Bot', path: '/bot' },
-        // { icon: 'mdi-android', text: 'Facade', path: '/facade' },
+        { icon: 'mdi-android', text: 'Android', path: '/android' },
         { icon: 'mdi-information', text: 'About', path: '/about' },
       ],
     }),
