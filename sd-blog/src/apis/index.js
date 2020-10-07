@@ -2,10 +2,10 @@ import axios from 'axios'
 
 const client_id = '371247898053-visifa9rl1n2ni6n0pkhol05vl27o82u.apps.googleusercontent.com'
 const enterprise_id = 'LC03qonbzr'
+const base_url = 'https://androidmanagement.googleapis.com/v1'
+const policy_name = 'policy1'
 
 export function oauthSignIn() {
-    console.log(window.location.href)
-    console.log(window.location.href.replace('#/android', ''))
     // Google's OAuth 2.0 endpoint for requesting an access token
     var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
@@ -36,16 +36,40 @@ export function oauthSignIn() {
     form.submit();
 }
 
-export function getList(token) {
+function authAPI(token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return axios.get(`https://androidmanagement.googleapis.com/v1/enterprises/${enterprise_id}/devices`)
+
+}
+
+function runAuthAPI(token, method, url, data) {
+    authAPI(token)
+    return axios({
+        method,
+        url,
+        data
+    })
+}
+
+export function enroll(token) {
+    return runAuthAPI(token, 'post', `${base_url}/enterprises/${enterprise_id}/enrollmentTokens`)
+}
+
+export function getList(token) {
+    return runAuthAPI(token, 'get', `${base_url}/enterprises/${enterprise_id}/devices`)
 }
 
 export function lock(token, device_name) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    return axios.post(`https://androidmanagement.googleapis.com/v1/${device_name}:issueCommand`,
-        {
-            "type": "LOCK"
-        }
-    )
+    return runAuthAPI(token, 'post', `${base_url}/${device_name}:issueCommand`, {
+        "type": "LOCK"
+    })
+}
+
+export function reboot(token, device_name) {
+    return runAuthAPI(token, 'post', `${base_url}/${device_name}:issueCommand`, {
+        "type": "REBOOT"
+    })
+}
+
+export function runPolicy(token, policy_json) {
+    return runAuthAPI(token, 'patch', `${base_url}/enterprises/${enterprise_id}/policies/${policy_name}`, JSON.parse(policy_json))
 }

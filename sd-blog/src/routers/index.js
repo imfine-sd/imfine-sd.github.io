@@ -10,6 +10,7 @@ import File from '@/components/File.vue';
 import Facade from '@/components/Facade.vue';
 import Bot from '@/components/Bot.vue';
 import Android from '@/components/Android.vue';
+import QR from '@/components/QR.vue';
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,10 @@ export const router = new VueRouter({
         {
             path: '/android',
             component: Android
+        },
+        {
+            path: '/qr/:value',
+            component: QR
         },
         {
             path: '/about',
