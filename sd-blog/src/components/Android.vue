@@ -119,7 +119,7 @@ export default {
         register: function() {
             api.enroll(this.getToken)
             .then(result => {
-                window.open(`http://localhost:8080/#/qr/${result.data.value}`)
+                window.open(`http://imfine-sd.github.io/#/qr/${result.data.value}`)
             })
         },
         unregister: function() {
