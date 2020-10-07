@@ -12,7 +12,7 @@
         <v-btn outlined color="primary" class="ml-4" @click="register">
             REGISTER
         </v-btn>
-        <v-btn outlined color="primary" class="ml-4">
+        <v-btn outlined color="primary" class="ml-4" @click="unregister">
             UNREGISTER
         </v-btn>
 
@@ -120,6 +120,11 @@ export default {
             api.enroll(this.getToken)
             .then(result => {
                 window.open(`http://localhost:8080/#/qr/${result.data.value}`)
+            })
+        },
+        unregister: function() {
+            this.selected_list.map(item => {
+                api.unreigster(this.getToken, item.name)
             })
         },
         lock: function() {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const client_id = '371247898053-visifa9rl1n2ni6n0pkhol05vl27o82u.apps.googleusercontent.com'
-const enterprise_id = 'LC03qonbzr'
+const client_id = '36984831533-ibk1pvj1uklnocst7udqni6i3kc1g51p.apps.googleusercontent.com'
+const enterprise_id = 'LC010siktc'
 const base_url = 'https://androidmanagement.googleapis.com/v1'
 const policy_name = 'policy1'
 
@@ -51,7 +51,13 @@ function runAuthAPI(token, method, url, data) {
 }
 
 export function enroll(token) {
-    return runAuthAPI(token, 'post', `${base_url}/enterprises/${enterprise_id}/enrollmentTokens`)
+    return runAuthAPI(token, 'post', `${base_url}/enterprises/${enterprise_id}/enrollmentTokens`, {
+        policyName: policy_name,
+    })
+}
+
+export function unreigster(token, device_name) {
+    return runAuthAPI(token, 'delete', `${base_url}/${device_name}`)
 }
 
 export function getList(token) {
